@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>412Labs - Demo 1</title>
+    <script src="js/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+            <img id="logo" src="img/412logo.png">
+            <img id="floor" src="img/floor.jpg">
+            <a-asset-item id="building" src="models/Lowpoly_tree_sample.dae"></a-asset-item>
+            <a-asset-item id="mic" src="models/microphone.gltf"></a-asset-item>
+            <video id="video" autoplay loop src="videos/video.mp4"></video>
+        </a-assets>
+        <a-box position="2 1.5 -3" color="#1abc9c" width="0.75" height="0.75" depth="0.75"></a-box>
+        <a-circle position="0 5 -10" radius="2" src="#logo"></a-circle>
+        <a-collada-model position="-2 0 -5" scale="100 100 100" src="#building"></a-collada-model>
+        <a-cone position="-4 0.5 0" color="#3498db" radius-top="1" radius-bottom="0" height="2"></a-cone>
+        <a-curvedimage position="-10 5 -10" src="#logo" height="5" radius="8" theta-length="100" rotation="0 180 0" scale="1 1 1"></a-curvedimage>
+        <a-cylinder color="#2c3e50" position="3 1.5 0" height="1.5" radius="0.5"></a-cylinder>
+        <!-- <a-dodecahedron position="3 1.5 3" color="#e74c3c" radius="1"></a-dodecahedron> -->
+        <a-icosahedron position="3 1.5 3" color="#e74c3c" radius="0.5"></a-icosahedron>
+        <a-gltf-model src="#mic"position="1 1.5 4"></a-gltf-model>
+        <a-image position="-3 5 -10" src="#logo"></a-image>
+        <!-- <a-light type="point" color="blue" position="-1 1 0"></a-light> -->
+        <a-plane material="src: #floor; repeat: 5 5" rotation="-90 0 0" width="10" height="10" position"0 0 0"=></a-plane>
+        <a-ring position="0 1 4" rotation="0 180 0" color="#2c3e50" inner-radius="1" outer-radius="1.25"></a-ring>
+        <a-sound src="sounds/Forever.mp3" autoplay="true" position="0 0 0"></a-sound>
+        <a-sphere position="0 1 -1" color="#27ae60" radius="0.25"></a-sphere>
+        <a-sky color="#2c3e50"></a-sky>
+        <a-text position="-5 8 -10" scale="5 5 5" color="#d35400" value="Creating VR experiences"></a-text>
+        <a-torus-knot position="-3 2 5" color="#B84A39" arc="180" p="1" q="6" radius="1" radius-tubular="0.05"></a-torus-knot>
+        <a-video position="10 7 -15" src="#video" width="10" height="5"></a-video>
+    </a-scene>
+  </body>
+</html>
