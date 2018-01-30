@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>412Labs - Demo 2</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+</head>
+
+<body>
+
+	<a-scene>
+		<a-assets>
+			<a-asset-item id="testFont0" src="fonts/optimer_bold.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont1" src="fonts/optimer_regular.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont2" src="fonts/gentilis_bold.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont3" src="fonts/gentilis_regular.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont4" src="fonts/helvetiker_bold.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont5" src="fonts/helvetiker_regular.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont6" src="fonts/dawningOfANewDayRegular.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont7" src="fonts/exo2Black.typeface.json"></a-asset-item>
+			<a-asset-item id="testFont8" src="fonts/exo2BlackItalic.typeface.json"></a-asset-item>
+		</a-assets>
+
+		<a-box position="1.5 1.5 -3" width="0.75" height="0.75" depth="0.75" color="#d35400">
+			<a-animation attribute="rotation" repeat="indefinite" to="0 180 0" dur="2000" easing="linear"></a-animation>
+		</a-box>	
+		<a-cylinder position="3 1.5 -2" radius="0.25" height="0.75" color="#d35400">
+			<a-animation attribute="rotation" repeat="indefinite" to="180 0 0" dur="1000" easing="linear"></a-animation>
+		</a-cylinder>		
+		<a-sphere position="-1.5 1.5 -3" radius="0.25" color="#d35400">
+			<a-animation attribute="radius" repeat="indefinite" to="0.5" dur="2000" easing="linear" direction="alternate"></a-animation>
+			<a-animation attribute="color" repeat="indefinite" to="#1abc9c" dur="2000" easing="linear" direction="alternate"></a-animation>
+		</a-sphere>
+		
+		<a-entity 
+		position="0 5 -10" 
+		material="color: #d35400" 
+		text-geometry="value: 412labs; font: #testFont5; bevelEnabled: true; bevelSize: 0.03; bevelThickness: 0.2; curveSegments: 12; size: 0.75; height: 0.005;"></a-entity>
+		<a-entity 
+		size="1" 
+		position="-2.5 4 -10" 
+		material="color: #d35400" 
+		text-geometry="value: Creating VR Experiences; font: #testFont5; bevelEnabled: true; bevelSize: 0.03; bevelThickness: 0.2; curveSegments: 12; size: 0.75; height: 0.005;"></a-entity>
+
+		<a-plane position="0 0 0" rotation="-90 0 0" color="#2980b9" width="10" height="10">
+			<a-animation attribute="color" repeat="indefinite" to="#d35400" dur="8000" easing="linear" direction="alternate"></a-animation>
+		</a-plane>
+
+		<a-sky color="#34495e">
+			<a-animation attribute="color" repeat="indefinite" to="#d35400" dur="5000" easing="linear" direction="alternate"></a-animation>
+		</a-sky>
+	</a-scene>
+
+</body>
+</html>
