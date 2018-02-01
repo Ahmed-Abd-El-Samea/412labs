@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>412Labs - Demo 3</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="js/set-image.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <audio id="clk" src="sounds/click.ogg"></audio>
+        <img id="img-1" src="img/360_1.jpg">
+        <img id="img-2" src="img/360_2.jpg">
+        <img id="img-3" src="img/360_3.jpg">
+        <img id="img-4" src="img/360_4.jpg">
+        <img id="img-5" src="img/360_5.jpg">
+        <script id="planeTemplate" type="text/html">
+          <a-plane id="clickable" height="0.5" width="0.5" material="color: #d35400;"
+            event-set__1="_event: mouseenter; scale: 1.2 1.2 1.2;"
+            event-set__2="_event: mouseleave; scale: 1 1 1;"
+            sound="src: #clk; on: click;"
+            event-set__3="_event: click; _target: #sky; src: ${img};">
+            <a-text value="${num}" align="center" opacity="1"></a-text>
+
+          </a-plane>
+        </script> 
+      </a-assets>
+
+        <a-sky id="sky" src="img/360_1.jpg"></a-sky>
+
+        <!-- event-set__3="_event: click; _target: #sky; src: ${img};" -->
+        <a-entity template="src: #planeTemplate" position="1 0.5 -3" data-num="4" data-img="#img-1"></a-entity>
+        <a-entity template="src: #planeTemplate" position="0 0.5 -3" data-num="3" data-img="#img-2"></a-entity>
+        <a-entity template="src: #planeTemplate" position="-1 0.5 -3" data-num="2" data-img="#img-3"></a-entity>
+        <a-entity template="src: #planeTemplate" position="-2 0.5 -3" data-num="1" data-img="#img-4"></a-entity>
+        <a-entity template="src: #planeTemplate" position="2 0.5 -3" data-num="5" data-img="#img-5"></a-entity>
+
+        <a-camera>
+          <a-cursor geometry="primitive: ring;" color="#d35400" fuse="false" raycaster="objects: #clickable"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 0.8 0.8 0.8; dur: 50; easing: linear;"
+          animation__mouseleaveScale="property: scale; startEvents: mouseleave; from: 0.8 0.8 0.8; to: 1 1 1; dur: 50; easing: linear;"
+          animation__mouseenterScale="property: scale; startEvents: mouseenter; from: 1 1 1; to: 0.8 0.8 0.8; dur: 50; easing: linear;"
+          animation__mouseenterColor="property: color; startEvents: mouseenter; from: #d35400; to: #000000; dur: 50; easing: linear;"
+          animation__mouseleaveColor="property: color; startEvents: mouseleave; from: #000000; to: #d35400; dur: 50; easing: linear;">
+          </a-cursor>
+        </a-camera>
+
+        
+
+        <!-- <a-camera>
+        <a-entity cursor="fuse: true;"
+        position="0 0 -3"
+        geometry="primitive: ring"
+        material="color: black; shader: flat">
+<a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+             fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+<a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+             fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+</a-entity>
+</a-camera> -->
+    </a-scene>
+  </body>
+</html>
