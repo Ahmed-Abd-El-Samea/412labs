@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>412Labs - Demo 4</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>    
+    <script src="js/hide-and-display2.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <audio id="clk" src="sounds/click.ogg"></audio>
+        <img id="A" src="img/A-Outside - center.jpg">
+        <img id="B" src="img/B-Reception - whole.jpg">
+        <img id="C" src="img/C-Reception - living room.jpg">
+        <img id="D" src="img/D-Reception - kitchen.jpg">
+        <img id="K" src="img/K-Outside.jpg">
+        <script id="planeTemplate" type="text/html">
+          <a-plane id=${id} class="clickable" height="0.5" width="0.5" 
+            material="color: #d35400;"
+            look-at="[camera]"
+            event-set__1="_event: mouseenter; scale: 1.2 1.2 1.2;"
+            event-set__2="_event: mouseleave; scale: 1 1 1;"
+            sound="src: #clk; on: click;">
+            <a-text value="${num}" align="center" opacity="1"></a-text>
+          </a-plane>
+        </script> 
+      </a-assets>
+
+
+        <a-sky id="sky" src="#K"></a-sky>
+        <a-entity id="planes">
+          <a-entity data-id="two" template="src: #planeTemplate" position="0 1 10" data-num="2"
+          show-hide="on: click; target: #sky; src: #A"></a-entity>
+        </a-entity>
+
+        <a-camera look-controls="reverseMouseDrag: true">
+          <a-cursor geometry="primitive: ring;" color="#d35400" fuse="false" raycaster="objects: .clickable"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 0.8 0.8 0.8; dur: 50; easing: linear;"
+          animation__mouseleaveScale="property: scale; startEvents: mouseleave; from: 0.8 0.8 0.8; to: 1 1 1; dur: 50; easing: linear;"
+          animation__mouseenterScale="property: scale; startEvents: mouseenter; from: 1 1 1; to: 0.8 0.8 0.8; dur: 50; easing: linear;"
+          animation__mouseenterColor="property: color; startEvents: mouseenter; from: #d35400; to: #000000; dur: 50; easing: linear;"
+          animation__mouseleaveColor="property: color; startEvents: mouseleave; from: #000000; to: #d35400; dur: 50; easing: linear;">
+          </a-cursor>
+        </a-camera>
+
+    </a-scene>
+  </body>
+</html>
